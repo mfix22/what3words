@@ -1,0 +1,22 @@
+{
+  "name": "what3words",
+  "version": "1.0.0",
+  "description": "Node client for what3words API",
+  "main": "what3words.js",
+  "scripts": {
+    "test": "node test/what3wordsTest.js"
+  },
+  "keywords": [
+    "what3words",
+    "location"
+  ],
+  "author": "Michael Fix",
+  "license": "ISC",
+  "devDependencies": {
+    "assert": "^1.4.1"
+  },
+  "dependencies": {
+    "promise": "^7.1.1",
+    "request": "^2.72.0"
+  }
+}
