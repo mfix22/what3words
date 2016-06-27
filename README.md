@@ -1,5 +1,5 @@
 #what3words ![what3words](https://github.com/mfix22/what3words/blob/master/img/w3wPinSmall.png)
-### Node.js library for [what3words](http://what3words.com/) API
+#### Node.js library for [what3words](http://what3words.com/) API
 
 ###Getting started
 ```sh
@@ -87,7 +87,8 @@ w3w.forward({
   addr : 'steep.sober.potato',
   display : 'terse'
 }, function (err, res){
-  console.log(JSON.stringify(res, null, 4));
+  if (err) console.log(err);
+  else console.log(JSON.stringify(res, null, 4));
 });
 ```
 
