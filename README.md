@@ -27,16 +27,13 @@ All config options can be overidden in function calls. Each config option will b
 overidden by the specific function call.
 
 key _(required)_ - your API key (get yours [here](https://map.what3words.com/register?dev=true))
-
 lang _(optional)_ - a supported w3w address language: `en (the default),de, ru, sv, pt, sw, it, fr, es or tr`.
-
 format _(optional)_ - return data format type. Can be `json` (the default), `geojson` or `xml`
-
 display _(optional)_ - return display type. Can be `full` (the default) or `terse`
 
 
 #### Functions
-For each of the functions below, all options are passed in the first function parameter. If a second parameter is included, that will be the functions callback. If not, the function will return a `[Promise](https://www.npmjs.com/package/promise)`
+For each of the functions below, all options are passed in the first function parameter. If a second parameter is included, that will be the functions callback. If not, the function will return a [`Promise`](https://www.npmjs.com/package/promise)
 
 #####forward(options[, callback])
 ######options
