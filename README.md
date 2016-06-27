@@ -1,4 +1,4 @@
-#what3words ![what3words](what3words/img/w3wPin.png)
+#what3words ![what3words](https://github.com/mfix22/what3words/blob/master/img/w3wPin.png)
 ### Node.js library for what3words API
 
 ###Getting started
