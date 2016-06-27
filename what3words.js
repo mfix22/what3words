@@ -1,49 +1,77 @@
 var Request = require('request');
 var Promise = require('promise');
 
-var fns = {
-  'forward' : {
-    baseURL : 'https://api.what3words.com/v2/forward',
-    requiredConfig : ['key'],
-    requiredParam : ['addr'],
-    optionalConfig : ['lang', 'format', 'display'],
-    optionalParam : []
-  },
-  'reverse' : {
-    baseURL : 'https://api.what3words.com/v2/reverse',
-    requiredConfig : ['key'],
-    requiredParam : ['coords'],
-    optionalConfig : ['lang', 'format', 'display'],
-    optionalParam : []
-  },
-  'autosuggest' : {
-    baseURL : 'https://api.what3words.com/v2/autosuggest',
-    requiredConfig : ['key'],
-    requiredParam : ['addr'],
-    optionalConfig : ['lang', 'format', 'display'],
-    optionalParam : ['focus', 'clip']
-  },
-  'standardblend' : {
-    baseURL : 'https://api.what3words.com/v2/standardblend',
-    requiredConfig : ['key'],
-    requiredParam : ['addr'],
-    optionalConfig : ['lang', 'format'],
-    optionalParam : ['focus']
-  }
+var defaults = {
+  lang : 'en',
+  format : 'json',
+  display : 'full'
 }
 
+var settings = {
+  'url' : 'https://api.what3words.com/v2',
+  'defaults' : {
+    lang : 'en',
+    format : 'json',
+    display : 'full'
+  },
+  'fns' : {
+    'forward' : {
+      route : '/forward',
+      requiredConfig : ['key'],
+      requiredParam : ['addr'],
+      optionalConfig : ['lang', 'format', 'display'],
+      optionalParam : []
+    },
+    'reverse' : {
+      route : '/reverse',
+      requiredConfig : ['key'],
+      requiredParam : ['coords'],
+      optionalConfig : ['lang', 'format', 'display'],
+      optionalParam : []
+    },
+    'autosuggest' : {
+      route : '/autosuggest',
+      requiredConfig : ['key'],
+      requiredParam : ['addr'],
+      optionalConfig : ['lang', 'format', 'display'],
+      optionalParam : ['focus', 'clip']
+    },
+    'standardblend' : {
+      route : '/standardblend',
+      requiredConfig : ['key'],
+      requiredParam : ['addr'],
+      optionalConfig : ['lang', 'format'],
+      optionalParam : ['focus']
+    },
+    'grid' : {
+      requiredConfig : ['key'],
+      requiredParam : ['bbox'],
+      optionalConfig : ['format'],
+      optionalParam : []
+    },
+    'languages' : {
+      requiredConfig : ['key'],
+      requiredParam : [],
+      optionalConfig : ['format'],
+      optionalParam : []
+    }
+  }
+
+}
+
+// TODO make this extensible
 function config(config){
-  this.key = config.key;
+  this.key = config.key || settings.defaults.key;
   // set config or defaults
-  this.lang = config.lang || 'en';
-  this.format = config.format || 'json';
-  this.display = config.display || 'full';
+  this.lang = config.lang || settings.defaults.lang;
+  this.format = config.format || settings.defaults.format;
+  this.display = config.display || settings.defaults.display;
   return this;
 }
 
 function execute(params, callback){
-  var fn = fns[arguments.callee.caller.name];
-  var address = fn.baseURL + "?";
+  var fn = settings.fns[arguments.callee.caller.name];
+  var address = settings.url + (fn.route || "/" + arguments.callee.caller.name) + "?";
   if (fn.requiredConfig)
     fn.requiredConfig.forEach((requirement) => {
       if (!this[requirement] && !params[requirement]) throw new Error(requirement + " is required.");
@@ -103,8 +131,18 @@ function standardblend(params, callback) {
   return execute.apply(this, arguments);
 }
 
+function grid(params, callback) {
+  return execute.apply(this, arguments);
+}
+
+function languages(params, callback) {
+  return execute.apply(this, arguments);
+}
+
 exports.forward = forward;
 exports.reverse = reverse;
 exports.autosuggest = autosuggest;
 exports.standardblend = standardblend;
+exports.grid = grid;
+exports.languages = languages
 exports.config = config;

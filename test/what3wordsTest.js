@@ -1,7 +1,7 @@
 var w3w = require('../what3words');
 var assert = require('assert');
 w3w.config({
-  key : 'TBJKS6ER',
+  key : '<INSERT_YOUR_API_KEY>',
   lang : 'en'
 });
 
@@ -56,6 +56,19 @@ w3w.autosuggest({
 w3w.standardblend({
    addr : 'plan.clips.above',
    focus : '51.4243877,-0.3474524',
+}, function(err, res){
+  assert.equal(res.status.status,200);
+  assert.equal(res.status.reason, "OK")
+});
+
+w3w.grid({
+   bbox : '52.208867,0.117540,52.207988,0.116126',
+}, function(err, res){
+  assert.equal(res.status.status,200);
+  assert.equal(res.status.reason, "OK")
+});
+
+w3w.languages({
 }, function(err, res){
   assert.equal(res.status.status,200);
   assert.equal(res.status.reason, "OK")
