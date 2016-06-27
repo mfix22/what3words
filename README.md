@@ -90,3 +90,8 @@ w3w.forward({
   console.log(JSON.stringify(res, null, 4));
 });
 ```
+
+####Test
+```sh
+$ npm test
+```

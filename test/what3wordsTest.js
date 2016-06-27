@@ -1,7 +1,7 @@
 var w3w = require('../what3words');
 var assert = require('assert');
 w3w.config({
-  key : '<INSERT_YOUR_API_KEY>',
+  key : process.env.W3W_KEY, // <INSERT_YOUR_API_KEY_HERE>
   lang : 'en'
 });
 
@@ -9,16 +9,18 @@ w3w.forward({
   addr : 'steep.sober.potato',
   display : 'terse'
 }, function (err, res){
-  // console.log('CALLBACK', JSON.stringify(res, null, 4));
-  assert.equal(res.status.status,200);
-  assert.equal(res.status.reason, "OK")
+  if (err) console.log(JSON.stringify(err, null, 4));
+  else {
+    assert.equal(res.status.status, 200);
+    assert.equal(res.status.reason, "OK");
+  }
 });
 
 w3w.forward({
   addr : 'steep.sober.potato',
   display : 'terse'
 }).done(function(res){
-  // console.log('PROMISE', JSON.stringify(res, null, 4));
+  // console.log('PROMISE:', JSON.stringify(res, null, 4));
   assert.equal(res.status.status,200);
   assert.equal(res.status.reason, "OK")
 });

@@ -56,7 +56,6 @@ var settings = {
       optionalParam : []
     }
   }
-
 }
 
 // TODO make this extensible
@@ -95,8 +94,8 @@ function execute(params, callback){
       if (err) callback(err, null);
       else{
         var ret = JSON.parse(body);
-        if (ret.status.code) callback(ret.status.message, null);
-        else callback(null, JSON.parse(body));
+        if (ret.code || ret.status.code) callback(ret, null);
+        else callback(null, ret);
       }
     });
   }
@@ -107,8 +106,8 @@ function execute(params, callback){
         if (err) reject(err);
         else{
           var ret = JSON.parse(body);
-          if (ret.status.code) reject(ret.status.message);
-          else fulfill(JSON.parse(body));
+          if (ret.code) reject(ret);
+          else fulfill(ret);
         }
       });
     });
