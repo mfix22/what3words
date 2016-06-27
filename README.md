@@ -70,6 +70,6 @@ For each of the functions below, all options are passed in the first function pa
 * `bbox` _(required)_ - Bounding box, specified by the northeast and southwest corner coordinates, for which the grid should be returned
 * `format` _(optional)_ - return data format type (see Config)
 
-######languages(options[, callback])
+#####languages(options[, callback])
 ######options
 * `format` _(optional)_ - return data format type (see Config)
