@@ -10,7 +10,10 @@
     "what3words",
     "location",
     "geocoding",
-    "reverse geocoding"
+    "reverse geocoding",
+    "forward geocoding",
+    "w3w",
+    "geocoder"
   ],
   "author": "Michael Fix",
   "license": "ISC",
