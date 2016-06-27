@@ -1,5 +1,5 @@
 #what3words ![what3words](https://github.com/mfix22/what3words/blob/master/img/w3wPinSmall.png)
-### Node.js library for what3words API
+### Node.js library for [what3words](http://what3words.com/) API
 
 ###Getting started
 ```sh
