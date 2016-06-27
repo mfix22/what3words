@@ -22,14 +22,14 @@ var options = {
 
 w3w.config(options);
 ```
-###### Options
+######options
 All config options can be overidden in function calls. Each config option will be included in every call that is not
 overidden by the specific function call.
 
-key _(required)_ - your API key (get yours [here](https://map.what3words.com/register?dev=true))
-lang _(optional)_ - a supported w3w address language: `en (the default),de, ru, sv, pt, sw, it, fr, es or tr`.
-format _(optional)_ - return data format type. Can be `json` (the default), `geojson` or `xml`
-display _(optional)_ - return display type. Can be `full` (the default) or `terse`
+key _(required)_ - your API key (get yours [here](https://map.what3words.com/register?dev=true))  
+lang _(optional)_ - a supported w3w address language: `en (the default),de, ru, sv, pt, sw, it, fr, es or tr`.  
+format _(optional)_ - return data format type. Can be `json` (the default), `geojson` or `xml`  
+display _(optional)_ - return display type. Can be `full` (the default) or `terse`  
 
 
 #### Functions
