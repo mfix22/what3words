@@ -1,7 +1,7 @@
 var w3w = require('../what3words');
 var assert = require('assert');
 w3w.config({
-  key : 'TBJKS6ER', // <INSERT_YOUR_API_KEY_HERE>
+  key : '<INSERT_YOUR_API_KEY_HERE>'
   lang : 'en'
 });
 
