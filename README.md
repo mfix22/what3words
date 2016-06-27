@@ -1,4 +1,5 @@
-#what3words
+[pin] : https://github.com/mfix22/what3words/raw/master/src/common/images/w3wPin.png
+#what3words ![what3words][pin]
 ### Node.js library for what3words API
 
 ###Getting started
@@ -27,13 +28,13 @@ All config options can be overidden in function calls. Each config option will b
 overidden by the specific function call.
 
 * `key` _(required)_ - your API key (get yours [here](https://map.what3words.com/register?dev=true))  
-* `lang` _(optional)_ - a supported w3w address language: `en (the default),de, ru, sv, pt, sw, it, fr, es or tr`.  
+* `lang` _(optional)_ - a supported w3w address language: `en` (the default), `de, ru, sv, pt, sw, it, fr, es` or `tr`.  
 * `format` _(optional)_ - return data format type. Can be `json` (the default), `geojson` or `xml`  
 * `display` _(optional)_ - return display type. Can be `full` (the default) or `terse`  
 
 
-#### Functions
-For each of the functions below, all options are passed in the first function parameter. If a second parameter is included, that will be the functions callback. If not, the function will return a [`Promise`](https://www.npmjs.com/package/promise)
+####Functions
+For each of the functions below, all options are passed in the first function parameter. If a second parameter is included, that will be the functions callback. If not, the function will return a [`Promise`](https://www.npmjs.com/package/promise).
 
 #####forward(options[, callback])
 ######options
@@ -73,3 +74,20 @@ For each of the functions below, all options are passed in the first function pa
 #####languages(options[, callback])
 ######options
 * `format` _(optional)_ - return data format type (see Config)
+
+####Example
+```javascript
+var w3w = require('../what3words');
+
+w3w.config({
+  key : '<INSERT_YOUR_API_KEY>',
+  lang : 'en'
+});
+
+w3w.forward({
+  addr : 'steep.sober.potato',
+  display : 'terse'
+}, function (err, res){
+  console.log(JSON.stringify(res, null, 4));
+});
+```
