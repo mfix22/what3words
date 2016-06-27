@@ -8,7 +8,9 @@
   },
   "keywords": [
     "what3words",
-    "location"
+    "location",
+    "geocoding",
+    "reverse geocoding"
   ],
   "author": "Michael Fix",
   "license": "ISC",
