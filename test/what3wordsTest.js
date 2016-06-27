@@ -1,7 +1,7 @@
 var w3w = require('../what3words');
 var assert = require('assert');
 w3w.config({
-  key : process.env.W3W_KEY, // <INSERT_YOUR_API_KEY_HERE>
+  key : 'TBJKS6ER', // <INSERT_YOUR_API_KEY_HERE>
   lang : 'en'
 });
 
@@ -29,7 +29,8 @@ w3w.forward({
   addr : 'steep.bleh.potato',
   display : 'terse'
 }, function(err, res){
-  assert(err);
+  assert.equal(res.status.code, 300);
+  assert.equal(res.status.message, 'Invalid or non-existent 3 word address');
 });
 
 w3w.reverse({
@@ -53,7 +54,7 @@ w3w.autosuggest({
    focus : '51.521251,-0.203586',
    clip : "radius(51.4243877,-0.34"
 }, function(err, res){
-  assert(err);
+  assert.equal(res.status.code, 106);
 });
 w3w.standardblend({
    addr : 'plan.clips.above',
