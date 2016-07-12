@@ -21,7 +21,7 @@
     "assert": "^1.4.1"
   },
   "dependencies": {
-    "librarify": "^1.0.0"
+    "librarify": "1.0.0"
   },
   "directories": {
     "test": "test"

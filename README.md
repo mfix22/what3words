@@ -76,7 +76,7 @@ For each of the functions below, all options are passed in the first function pa
 
 ####Example
 ```javascript
-var w3w = require('../what3words');
+var w3w = require('what3words');
 
 w3w.config({
   key : '<INSERT_YOUR_API_KEY>',
